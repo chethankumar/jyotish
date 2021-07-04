@@ -42,6 +42,17 @@ const calculateLagna = (tt, {lat, lng}, lagna_type) => {
     return [La, Houses.house];
 };
 
+const calculateXh = (tt, {lat, lng}, lagna_type) => {
+    let Houses = swisseph.swe_houses_ex(tt, swisseph.SEFLG_SIDEREAL, lat, lng, lagna_type);
+    
+    let Xh = {};
+    Xh.graha = 'Xh';
+    Xh.longitude = Houses.mc;
+    Xh.isRetrograde = false;
+    setBodyDetails(Xh);
+    return [Xh, Houses.house];
+};
+
 const calculateGrahaPositions = (birthDetails, houseType, flag) => {
 
     let grahasPositions = {};
@@ -57,15 +68,17 @@ const calculateGrahaPositions = (birthDetails, houseType, flag) => {
     grahasPositions.Ke = setKetuDetails(grahasPositions.Ra.longitude);
 
     [La, houses] = calculateLagna(tt, birthDetails, houseType);
+    [Xh, houses] = calculateXh(tt, birthDetails, houseType);
 
     grahasPositions.La = La;
+    grahasPositions.Xh = Xh;
 
     // [grahasWithBhava, bhavaDetails] = calculateHouseDetails(grahasPositions, houses, lagna_type);
 
     return grahasPositions;
 }
 
-const getGrahasPosition = (birthDetails, {zodiacType = 'S', ayanamsha = 1, houseType = 'E'} = {}) => {
+const getGrahasPosition = (birthDetails, {zodiacType = 'S', ayanamsha = 5, houseType = 'E'} = {}) => {
     birthDetails = getValidatedBirthDetails(birthDetails);
 
     let {et, tt} = convertTime(birthDetails);
