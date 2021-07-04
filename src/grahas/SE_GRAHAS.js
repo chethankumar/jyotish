@@ -6,5 +6,6 @@ module.exports = {
     Ma: 4,
     Ju: 5,
     Sa: 6,
+    Ur: 7,
     Ra: 10
 }
