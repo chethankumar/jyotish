@@ -1,6 +1,6 @@
 {
   "name": "jyotish-modified",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "The Jyotish module has calculations related to Vedic Astrology",
   "main": "index.js",
   "scripts": {
