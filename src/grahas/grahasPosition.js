@@ -73,6 +73,15 @@ const calculateGrahaPositions = (birthDetails, houseType, flag) => {
     grahasPositions.La = La;
     grahasPositions.Xh = Xh;
 
+    for(let i=0;i<=11;i+=1){
+        let H = {};
+        H.graha = i<9?"0"+(i+1):""+(i+1);
+        H.longitude = houses[i];
+        H.isRetrograde = false;
+        setBodyDetails(H);
+        grahasPositions[H.graha]=H;
+        }
+
     // [grahasWithBhava, bhavaDetails] = calculateHouseDetails(grahasPositions, houses, lagna_type);
 
     return grahasPositions;
