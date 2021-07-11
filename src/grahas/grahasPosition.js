@@ -88,7 +88,48 @@ const calculateGrahaPositions = (birthDetails, houseType, flag) => {
 
   for (let i = 0; i <= 11; i += 1) {
     let H = {};
-    H.graha = i < 9 ? "0" + (i + 1) : "" + (i + 1);
+    switch (i) {
+      case 0:
+        H.graha = "I";
+        break;
+      case 1:
+        H.graha = "II";
+        break;
+      case 2:
+        H.graha = "III";
+        break;
+      case 3:
+        H.graha = "IV";
+        break;
+      case 4:
+        H.graha = "V";
+        break;
+      case 5:
+        H.graha = "VI";
+        break;
+      case 6:
+        H.graha = "VII";
+        break;
+      case 7:
+        H.graha = "VIII";
+        break;
+      case 8:
+        H.graha = "IX";
+        break;
+      case 9:
+        H.graha = "X";
+        break;
+      case 10:
+        H.graha = "XI";
+        break;
+      case 11:
+        H.graha = "XII";
+        break;
+
+      default:
+        break;
+    }
+
     H.longitude = houses[i];
     setBodyDetails(H);
     H.isRetrograde = false;
